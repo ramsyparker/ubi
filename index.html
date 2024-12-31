@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="fireworks.css">
+    <title>Fireworks</title>
+    <style>
+      /* Membuat elemen audio transparan */
+      #background-music {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="instructions">SAYANG PENCET INI!</div>
+    
+    <!-- Elemen audio -->
+    <audio id="background-music" loop>
+      <source src="/music/musik.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+      // Menambahkan event listener untuk memutar audio setelah klik
+      const audioElement = document.getElementById('background-music');
+      document.body.addEventListener('click', () => {
+        if (audioElement.paused) {
+          audioElement.play().catch(error => {
+            console.error('Autoplay prevented:', error);
+          });
+        }
+      });
+    </script>
+    
+    <script src="fireworks.js"></script>
+  </body>
+</html>
